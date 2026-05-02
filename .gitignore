@@ -1,0 +1,4 @@
+build/*
+!build/Assets/
+compile_commands.json
+.cache
