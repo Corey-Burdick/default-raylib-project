@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 4.2)
 project(default C CXX)
 
 include(FetchContent)
