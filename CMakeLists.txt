@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 4.0)
-project(build C CXX)
+project(default C CXX)
 
 include(FetchContent)
 
@@ -21,3 +21,7 @@ add_executable(${CMAKE_PROJECT_NAME} ${MY_SOURCES})
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC include)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib)
+
+file(COPY "assets"
+  DESTINATION "${CMAKE_CURRENT_BINARY_DIR}"
+)
