@@ -3,6 +3,10 @@ project(default C CXX)
 
 include(FetchContent)
 
+if(WIN32)
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -static")
+endif()
+
 set(RAYLIB_VERSION 5.5)
 
 FetchContent_Declare(
