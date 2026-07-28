@@ -29,6 +29,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(${CMAKE_PROJECT_NAME} ${MY_SOURCES})
 
+if(WIN32)
+  set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE)
+endif()
+
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC include)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib)
 

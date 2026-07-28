@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include <game.h>
+#include <ctime>
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #endif
@@ -17,6 +18,7 @@ int main() {
   
   Game game;
   g_gameInstance = &game;
+  SetRandomSeed(time(NULL));
 
   InitWindow(400, 300, "Raylib Sample Project | FPS: 0");
 
