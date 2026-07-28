@@ -7,7 +7,7 @@ if(WIN32)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -static")
 endif()
 
-set(RAYLIB_VERSION 5.5)
+set(RAYLIB_VERSION 6.0)
 
 FetchContent_Declare(
   raylib
