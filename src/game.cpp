@@ -1,28 +1,30 @@
 #include <game.h>
 
 Game::Game() {
-
+#if defined(PLATFORM_WEB)
+  _fragShader = LoadShader(0, "assets/shaders/gradientWeb.fs");
+#else
+  _fragShader = LoadShader(0, "assets/shaders/gradient.fs");
+#endif
 }
 
 Game::~Game() {
-
+  UnloadShader(_fragShader);
 }
 
 void Game::update() {
   SetWindowTitle(TextFormat("Raylib Sample Project | FPS: %i", GetFPS()));
+
+  int resolutionLoc = GetShaderLocation(_fragShader, "resolution");
+  float resolution[2] = {(float)GetScreenWidth(), (float)GetScreenHeight()};
+  SetShaderValue(_fragShader, resolutionLoc, resolution, SHADER_UNIFORM_VEC2); 
 }
 
 void Game::draw() {
   BeginDrawing();
     ClearBackground(RAYWHITE);
-    for (int x = 0; x * 4 < GetScreenWidth(); x++) {
-      for (int y = 0; y * 4 < GetScreenHeight(); y++) {
-        int r = GetRandomValue(0, 255);
-        int g = GetRandomValue(0, 255);
-        int b = GetRandomValue(0, 255);
-        Color randomColor = {static_cast<unsigned char>(r), static_cast<unsigned char>(g), static_cast<unsigned char>(b), 255};
-        DrawRectangle(x * 4, y * 4, 4, 4, randomColor);
-      }
-    }
+    BeginShaderMode(_fragShader);
+      DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), WHITE);
+    EndShaderMode();
   EndDrawing();
 }

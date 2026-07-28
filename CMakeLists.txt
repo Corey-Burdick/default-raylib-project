@@ -42,6 +42,9 @@ if(EMSCRIPTEN)
         "-sUSE_GLFW=3"         # raylib requires GLFW3 emulation
         "-sASYNCIFY"           # Allows infinite loops (Window loops) to run on web
         "-sALLOW_MEMORY_GROWTH=1"
+        "-sUSE_WEBGL2=1"
+        "-sMIN_WEBGL_VERSION=2"
+        "-SMAX_WEBGL_VERSION=2"
         "--preload-file=${ASSET_DIR}@/assets"
     )
 endif()

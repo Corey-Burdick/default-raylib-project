@@ -3,6 +3,8 @@
 
 class Game {
   private:
+    Shader _fragShader;
+    int _timeLoc;
 
   public:
     Game();
