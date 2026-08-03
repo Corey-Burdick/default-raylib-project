@@ -22,9 +22,9 @@ void Game::update() {
 
 void Game::draw() {
   BeginDrawing();
-    ClearBackground(RAYWHITE);
+    ClearBackground(BLACK);
     BeginShaderMode(_fragShader);
-      DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), WHITE);
+      DrawTriangle({(float)GetScreenWidth() / 2, 0.0f}, {0.0f, (float)GetScreenHeight()}, {(float)GetScreenWidth(), (float)GetScreenHeight()}, WHITE);
     EndShaderMode();
   EndDrawing();
 }
